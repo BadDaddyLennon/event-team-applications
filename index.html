@@ -29,11 +29,11 @@
         }
         h1 { font-family: 'Fredoka One', cursive; text-shadow: 4px 4px 0px rgba(0,0,0,0.15); line-height: 1.1; }
         .app-card { background: rgba(255, 255, 255, 0.98); border-radius: 40px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); border: 4px solid #fff; }
-        .input-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 18px; transition: 0.3s; }
+        .input-box { background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 18px; transition: 0.3s; width: 100%; padding: 1rem 1.25rem; }
         .input-box:focus { border-color: #ff007a; outline: none; transform: translateY(-2px); }
         .label-text { color: #2d3748; font-weight: 700; margin-bottom: 8px; display: block; font-size: 1rem; }
-        .btn-submit { background: linear-gradient(90deg, #ff007a, #8a2be2); color: white; font-family: 'Fredoka One', cursive; transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); border-bottom: 6px solid rgba(0,0,0,0.2); }
-        .btn-submit:hover:not(:disabled) { transform: scale(1.03); border-bottom-width: 2px; margin-top: 4px; }
+        .btn-submit { background: linear-gradient(90deg, #ff007a, #8a2be2); color: white; font-family: 'Fredoka One', cursive; transition: 0.3s; border-bottom: 6px solid rgba(0,0,0,0.2); cursor: pointer; }
+        .btn-submit:hover:not(:disabled) { transform: scale(1.02); border-bottom-width: 2px; margin-top: 4px; }
         .custom-check { appearance: none; width: 1.6rem; height: 1.6rem; border: 3px solid #8a2be2; border-radius: 8px; cursor: pointer; position: relative; background: white; flex-shrink: 0; }
         .custom-check:checked { background: #8a2be2; }
         .custom-check:checked::after { content: '⭐'; position: absolute; font-size: 0.9rem; left: 2px; top: 0px; }
@@ -52,10 +52,10 @@
         <div class="app-card p-8 md:p-12">
             <form id="appForm" class="space-y-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div><label class="label-text text-fun-pink">🌈 Discord Username</label><input type="text" id="discord" required placeholder="User#0000" class="w-full input-box px-5 py-4"></div>
-                    <div><label class="label-text text-fun-pink">🦖 In-Game Name</label><input type="text" id="ign" required placeholder="Character Name" class="w-full input-box px-5 py-4"></div>
-                    <div><label class="label-text text-fun-pink">🌍 Country / Timezone</label><input type="text" id="timezone" required placeholder="e.g. UK / GMT" class="w-full input-box px-5 py-4"></div>
-                    <div><label class="label-text text-fun-pink">⏰ General Availability</label><input type="text" id="avail" required placeholder="e.g. Evenings & Weekends" class="w-full input-box px-5 py-4"></div>
+                    <div><label class="label-text text-fun-pink">🌈 Discord Username</label><input type="text" id="discord" required placeholder="User#0000" class="input-box"></div>
+                    <div><label class="label-text text-fun-pink">🦖 In-Game Name</label><input type="text" id="ign" required placeholder="Character Name" class="input-box"></div>
+                    <div><label class="label-text text-fun-pink">🌍 Country / Timezone</label><input type="text" id="timezone" required placeholder="e.g. UK / GMT" class="input-box"></div>
+                    <div><label class="label-text text-fun-pink">⏰ How often will you be available (normally)?</label><input type="text" id="avail" required placeholder="e.g. Evenings & Weekends" class="input-box"></div>
                 </div>
 
                 <div class="bg-gradient-to-br from-pink-50 to-blue-50 p-6 md:p-10 rounded-3xl border-4 border-white shadow-inner">
@@ -63,34 +63,34 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex items-start space-x-4 p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
                             <input type="checkbox" class="check-skill custom-check" value="Master Builder">
-                            <div><p class="font-bold text-gray-800">Master Builder 🏗️</p><p class="text-xs text-gray-500 italic">You love Creative Mode and building beautiful arenas!</p></div>
+                            <div><p class="font-bold text-gray-800">Master Builder 🏗️</p><p class="text-xs text-gray-500 italic">You love Creative Mode and can build beautiful arenas, mazes, or obstacle courses!</p></div>
                         </div>
                         <div class="flex items-start space-x-4 p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
                             <input type="checkbox" class="check-skill custom-check" value="Admin Wizard">
-                            <div><p class="font-bold text-gray-800">Admin Wizard 🧙‍♂️</p><p class="text-xs text-gray-500 italic">Comfortable with commands and spawning items.</p></div>
+                            <div><p class="font-bold text-gray-800">Admin Wizard 🧙‍♂️</p><p class="text-xs text-gray-500 italic">You are comfortable with console commands, spawning items, and moving players safely.</p></div>
                         </div>
                         <div class="flex items-start space-x-4 p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
                             <input type="checkbox" class="check-skill custom-check" value="Big Thinker">
-                            <div><p class="font-bold text-gray-800">Big Thinker 💡</p><p class="text-xs text-gray-500 italic">Wild imagination for unique rules and fun modes.</p></div>
+                            <div><p class="font-bold text-gray-800">Big Thinker 💡</p><p class="text-xs text-gray-500 italic">You have a wild imagination and can come up with unique rules and fun game modes.</p></div>
                         </div>
                         <div class="flex items-start space-x-4 p-4 bg-white rounded-2xl shadow-sm border border-pink-100">
                             <input type="checkbox" class="check-skill custom-check" value="Hype Host">
-                            <div><p class="font-bold text-gray-800">Hype Host 🎤</p><p class="text-xs text-gray-500 italic">Great energy and explaining rules to players!</p></div>
+                            <div><p class="font-bold text-gray-800">Hype Host 🎤</p><p class="text-xs text-gray-500 italic">You're great at talking to players, explaining rules, and keeping the energy high!</p></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="space-y-8">
-                    <div><label class="label-text">💡 Describe one EPIC event idea!</label><textarea id="eventIdea" rows="3" required class="w-full input-box px-5 py-4 resize-none"></textarea></div>
-                    <div><label class="label-text">🤝 Teamwork Style (Solo vs Group)</label><textarea id="teamwork" rows="2" required class="w-full input-box px-5 py-4 resize-none"></textarea></div>
-                    <div><label class="label-text">🌟 Philosophy (Fairness, Chaos, or Difficulty?)</label><textarea id="community" rows="2" required class="w-full input-box px-5 py-4 resize-none"></textarea></div>
-                    <div><label class="label-text">📜 Previous Experience</label><textarea id="experience" rows="2" required class="w-full input-box px-5 py-4 resize-none"></textarea></div>
-                    <div><label class="label-text">🎭 How do you handle disruptive players?</label><textarea id="playerMgmt" rows="3" required class="w-full input-box px-5 py-4 resize-none"></textarea></div>
-                    <div><label class="label-text">🎁 Your view on balanced rewards</label><textarea id="rewards" rows="2" required class="w-full input-box px-5 py-4 resize-none"></textarea></div>
+                    <div><label class="label-text">💡 Describe one EPIC event idea you have for the server!</label><textarea id="eventIdea" rows="3" required class="input-box resize-none"></textarea></div>
+                    <div><label class="label-text">🤝 Teamwork: Do you prefer building solo or collaborating on big projects?</label><textarea id="teamwork" rows="2" required class="input-box resize-none"></textarea></div>
+                    <div><label class="label-text">🌟 Community: What is the most important thing to you? (Fairness, Difficulty, or Chaos?)</label><textarea id="community" rows="2" required class="input-box resize-none"></textarea></div>
+                    <div><label class="label-text">📜 Experience: Have you ever helped run or build an event on another server before?</label><textarea id="experience" rows="2" required class="input-box resize-none"></textarea></div>
+                    <div><label class="label-text">🎭 Scenario: A player is being disruptive during an event. How do you handle them?</label><textarea id="playerMgmt" rows="3" required class="input-box resize-none"></textarea></div>
+                    <div><label class="label-text">🎁 What is your philosophy on "Balanced" event rewards?</label><textarea id="rewards" rows="2" required class="input-box resize-none"></textarea></div>
                 </div>
 
                 <div class="pt-6 text-center">
-                    <button type="submit" id="submitBtn" class="w-full btn-submit py-6 rounded-full text-3xl shadow-2xl uppercase">SUBMIT FOR FUN! 🚀</button>
+                    <button type="submit" id="submitBtn" class="w-full btn-submit py-6 rounded-full text-3xl shadow-2xl uppercase">SUBMIT APPLICATION 🚀</button>
                     <p id="statusMsg" class="mt-8 font-black text-2xl uppercase italic opacity-0 transition-all"></p>
                 </div>
             </form>
@@ -98,58 +98,61 @@
     </div>
 
     <script>
-        const DISCORD_URL = "https://discord.com/api/webhooks/1458514001288892517/r0HqqI4vtDaai9Y9SfRfBJi0PVAwAzveOWuGhijW5a-QmoJxWWMBakt6kTXAx_Fo1iBL";
+        // UPDATED WEBHOOK AND THREAD ID
+        const WEBHOOK_BASE = "https://discord.com/api/webhooks/1459631306999599229/iupMtQCVAOzQs7bdOshKoj5lKChcB9RHACgJjzDbSe137DUrvzFdfnm2pLpcokiSpKKi";
+        const THREAD_ID = "1459659815683883019";
+        const DISCORD_URL = `${WEBHOOK_BASE}?thread_id=${THREAD_ID}`;
 
-        document.getElementById('appForm').addEventListener('submit', async (e) => {
+        document.getElementById('appForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
             const btn = document.getElementById('submitBtn');
             const msg = document.getElementById('statusMsg');
-            const skills = Array.from(document.querySelectorAll('.check-skill:checked')).map(el => el.value).join(', ') || "Eager to help!";
+            const skills = Array.from(document.querySelectorAll('.check-skill:checked')).map(el => el.value).join(', ') || "None selected";
 
             btn.disabled = true;
             btn.innerText = "🚀 SENDING...";
 
             const payload = {
-                content: "🔔 **New Event Team Application Received!**",
+                username: "ARKLegends Recruitment",
+                content: "📢 **New Staff Application Received!**",
                 embeds: [{
-                    title: "🎊 ARKLegendsPVE Application 🎊",
+                    title: "🎊 Event Team Candidate 🎊",
                     color: 16711802,
                     fields: [
-                        { name: "👤 Candidate", value: `**Discord:** ${document.getElementById('discord').value}\n**IGN:** ${document.getElementById('ign').value}`, inline: true },
-                        { name: "🕒 Availability", value: `**Avail:** ${document.getElementById('avail').value}`, inline: true },
-                        { name: "🌟 Superpowers", value: `⚡ ${skills}` },
+                        { name: "👤 User", value: `**Discord:** ${document.getElementById('discord').value}\n**IGN:** ${document.getElementById('ign').value}`, inline: true },
+                        { name: "🕒 Details", value: `**TZ:** ${document.getElementById('timezone').value}\n**Avail:** ${document.getElementById('avail').value}`, inline: true },
+                        { name: "🌟 Superpowers", value: skills },
                         { name: "💡 Idea", value: document.getElementById('eventIdea').value },
                         { name: "🤝 Teamwork", value: document.getElementById('teamwork').value },
-                        { name: "🎭 Player Management", value: document.getElementById('playerMgmt').value }
+                        { name: "🌟 Philosophy", value: document.getElementById('community').value },
+                        { name: "📜 History", value: document.getElementById('experience').value },
+                        { name: "🎭 Player Management", value: document.getElementById('playerMgmt').value },
+                        { name: "🎁 Rewards", value: document.getElementById('rewards').value }
                     ],
+                    footer: { text: "ARKLegendsPVE | System" },
                     timestamp: new Date()
                 }]
             };
 
-            try {
-                // We use 'keepalive' and a standard fetch to improve reliability on GitHub Pages
-                const response = await fetch(DISCORD_URL, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload)
-                });
-
-                // Discord sometimes returns 204 No Content for success
-                if (response.ok || response.status === 204) {
-                    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-                    msg.innerText = "SENT SUCCESSFULLY! 🎉";
-                    msg.classList.replace('opacity-0', 'opacity-100');
-                    document.getElementById('appForm').reset();
-                    btn.innerText = "SUCCESS! ✨";
-                } else {
-                    throw new Error("Discord Rejected Request");
-                }
-            } catch (err) {
+            fetch(DISCORD_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            }).then(() => {
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+                msg.innerText = "SENT SUCCESSFULLY! 🎉";
+                msg.style.color = "#ff007a";
+                msg.classList.remove('opacity-0');
+                msg.classList.add('opacity-100');
+                document.getElementById('appForm').reset();
+                btn.innerText = "SUCCESS! ✨";
+            }).catch(err => {
                 console.error(err);
-                alert("The signal failed! Please check that your Discord Webhook URL is correct in the code.");
+                alert("The signal failed. Check your internet or ensure the thread ID is correct.");
                 btn.disabled = false;
                 btn.innerText = "TRY AGAIN 🚀";
-            }
+            });
         });
     </script>
 </body>
