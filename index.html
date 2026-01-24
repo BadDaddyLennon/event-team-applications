@@ -90,7 +90,7 @@
                 </div>
 
                 <div class="pt-6 text-center">
-                    <button type="submit" id="submitBtn" class="w-full btn-submit py-6 rounded-full text-3xl shadow-2xl uppercase">SUBMIT APPLICATION 🚀</button>
+                    <button type="button" id="submitBtn" onclick="transmitData()" class="w-full btn-submit py-6 rounded-full text-3xl shadow-2xl uppercase">SUBMIT APPLICATION 🚀</button>
                     <p id="statusMsg" class="mt-8 font-black text-2xl uppercase italic opacity-0 transition-all"></p>
                 </div>
             </form>
@@ -98,17 +98,18 @@
     </div>
 
     <script>
-        // UPDATED WEBHOOK AND THREAD ID
-        const WEBHOOK_BASE = "https://discord.com/api/webhooks/1459631306999599229/iupMtQCVAOzQs7bdOshKoj5lKChcB9RHACgJjzDbSe137DUrvzFdfnm2pLpcokiSpKKi";
-        const THREAD_ID = "1459659815683883019";
-        const DISCORD_URL = `${WEBHOOK_BASE}?thread_id=${THREAD_ID}`;
+        const DISCORD_URL = "https://discord.com/api/webhooks/1460658621083029526/nzlUkkZ_q5wb7ERNHOF90LpJhESrjlLMO07Bg3X-VHFIbJOj9LXWtd4NtsDtxKgFytDx?thread_id=1460652302850457782";
 
-        document.getElementById('appForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
+        async function transmitData() {
             const btn = document.getElementById('submitBtn');
             const msg = document.getElementById('statusMsg');
             const skills = Array.from(document.querySelectorAll('.check-skill:checked')).map(el => el.value).join(', ') || "None selected";
+
+            // Basic Validation
+            if(!document.getElementById('discord').value || !document.getElementById('ign').value) {
+                alert("Please fill in your Discord and In-Game Name!");
+                return;
+            }
 
             btn.disabled = true;
             btn.innerText = "🚀 SENDING...";
@@ -135,25 +136,31 @@
                 }]
             };
 
-            fetch(DISCORD_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            }).then(() => {
-                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
-                msg.innerText = "SENT SUCCESSFULLY! 🎉";
-                msg.style.color = "#ff007a";
-                msg.classList.remove('opacity-0');
-                msg.classList.add('opacity-100');
-                document.getElementById('appForm').reset();
-                btn.innerText = "SUCCESS! ✨";
-            }).catch(err => {
-                console.error(err);
-                alert("The signal failed. Check your internet or ensure the thread ID is correct.");
+            try {
+                // Using exact method from Connection Test
+                const response = await fetch(DISCORD_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok || response.status === 204) {
+                    confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+                    msg.innerText = "SENT SUCCESSFULLY! 🎉";
+                    msg.style.color = "#ff007a";
+                    msg.classList.remove('opacity-0');
+                    msg.classList.add('opacity-100');
+                    document.getElementById('appForm').reset();
+                    btn.innerText = "SUCCESS! ✨";
+                } else {
+                    throw new Error("Discord Rejected");
+                }
+            } catch (err) {
+                alert("The signal failed. Since the test worked, please refresh the page and try again!");
                 btn.disabled = false;
                 btn.innerText = "TRY AGAIN 🚀";
-            });
-        });
+            }
+        }
     </script>
 </body>
 </html>
